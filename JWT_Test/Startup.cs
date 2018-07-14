@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
@@ -12,6 +13,8 @@ namespace JWT_Test
     {
         public void Configuration(IAppBuilder app)
         {
+            GlobalConfiguration.Configuration.Filters.Add(new AuthorizeAttribute());
+
             // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
             var options = new OAuthAuthorizationServerOptions();
             options.AllowInsecureHttp = true;
